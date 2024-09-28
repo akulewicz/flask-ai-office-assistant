@@ -1,0 +1,1 @@
+from aiassistant import app
