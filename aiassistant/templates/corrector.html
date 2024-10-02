@@ -13,19 +13,19 @@
   
       <!-- Card -->
       <div class="mt-5 p-4 relative z-10 bg-white border rounded-xl sm:mt-10 md:p-10">
-        <form method="post">
+        <form method="post" novalidate>
             {{ form.hidden_tag() }}
   
           <div>
             <label for="text" class="block mb-2 text-sm font-medium ">Tekst do korekty</label>
             <div class="mt-1">
             {% if form.text.errors %}
-                <textarea id="text" name="text" rows="3" class="py-3 px-4 block w-full border border-red-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Wpisz tekst do poprawy..."></textarea>
+                <textarea id="text" name="text" rows="5" class="py-3 px-4 block w-full border border-red-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Wpisz tekst do poprawy..."></textarea>
                 {% for error in form.text.errors %}
                     <p class="mt-2 text-xs text-red-500">{{ error }}</p>
                 {% endfor %}
             {% else %}
-                <textarea id="text" name="text" rows="3" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Wpisz tekst do poprawy..."></textarea>
+                <textarea id="text" name="text" rows="5" class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Wpisz tekst do poprawy..."></textarea>
             {% endif %}
             </div>
           </div>
@@ -45,15 +45,19 @@
           </div>
         </form>
       </div>
-      <!-- End Card -->
+      {% if corrected_text %}
+      <div class="mt-7 text-center">
+        <h2 class="text-xl text-gray-800 font-bold sm:text-3xl ">
+          Poprawiony tekst
+        </h2>
+      </div>
+      <div class="mt-5 p-4 relative z-10 bg-white border rounded-xl sm:mt-10 md:p-10">
+        <!-- End Card -->
+        {{ corrected_text }}
+      </div>
+      {% endif %}
     </div>
   </div>
   <!-- End Comment Form -->
-
-  {% if corrected_text %}
-
-  {{ corrected_text }}
-
-  {% endif %}
 
 {% endblock %}
