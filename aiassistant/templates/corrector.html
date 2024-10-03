@@ -45,15 +45,19 @@
           </div>
         </form>
       </div>
-      {% if corrected_text %}
+     {% if corrected_text %}
       <div class="mt-7 text-center">
         <h2 class="text-xl text-gray-800 font-bold sm:text-3xl ">
           Poprawiony tekst
         </h2>
       </div>
-      <div class="mt-5 p-4 relative z-10 bg-white border rounded-xl sm:mt-10 md:p-10">
+      <div class="mt-5 px-4 py-14 relative z-10 bg-white border rounded-xl sm:mt-10 md:px-10 md:py-14">
+        <button class="copy-button absolute top-3 right-3 text-sm rounded bg-gray-50 px-1 py-0.5 border border-gray-300 text-gray-600 hover:text-gray-800"><i class="fa-regular fa-copy"></i> Kopiuj tekst</button>
         <!-- End Card -->
-        {{ corrected_text }}
+        
+          <div class="corrected-text">
+            {{ corrected_text | safe  }} 
+          </div>
       </div>
       {% endif %}
     </div>

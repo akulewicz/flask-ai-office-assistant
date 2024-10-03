@@ -17,6 +17,7 @@ def corrector():
     form = CorrectorForm()
     if form.validate_on_submit():
         corrected_text = text_corrector_service.correct_text(text=form.text.data, simplify=form.simplify.data)
+        corrected_text = corrected_text.replace('\n', '<br>')
         return render_template('corrector.html', form=form, corrected_text=corrected_text)
     return render_template('corrector.html', form=form)
 
