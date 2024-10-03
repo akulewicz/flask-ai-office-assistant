@@ -1279,6 +1279,11 @@ video {
   padding-bottom: 3.5rem;
 }
 
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .pe-3 {
   padding-inline-end: 0.75rem;
 }
@@ -1322,6 +1327,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .\!font-medium {
