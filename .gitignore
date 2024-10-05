@@ -1,4 +1,5 @@
 .flaskenv
+.env
 node_modules
 venv
 package-lock.json
