@@ -56,6 +56,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
     
-@app.route("/preline.js")
-def serve_preline_js():
-    return send_from_directory("../node_modules/preline/dist", "preline.js")
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('errors/404.html'), 404
+
