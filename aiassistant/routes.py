@@ -1,11 +1,13 @@
 from aiassistant import app, bcrypt, db
-from aiassistant.forms import CorrectorForm, RegistrationForm, LoginForm
+from aiassistant.forms import CorrectorForm, AltGeneratorForm, RegistrationForm, LoginForm
 from aiassistant.services.text_corrector_service import TextCorrectorService
+from aiassistant.services.alt_generator_service import AltGeneratorService
 from aiassistant.models import User
 from flask import render_template, send_from_directory, request, redirect, flash, url_for
 from flask_login import login_user, current_user, logout_user, login_required
 
 text_corrector_service = TextCorrectorService()
+alt_generator_service = AltGeneratorService()
 
 @app.route("/")
 def home():
@@ -20,6 +22,15 @@ def corrector():
         corrected_text = corrected_text.replace('\n', '<br>')
         return render_template('corrector.html', form=form, corrected_text=corrected_text)
     return render_template('corrector.html', form=form)
+
+@app.route("/altgenerator", methods=['GET', 'POST'])
+@login_required
+def alt_generator():
+    form = AltGeneratorForm()
+    if form.validate_on_submit():
+        image_alt = alt_generator_service.generate_alt(image_url=form.image_url.data)
+        return render_template('alt_generator.html', form=form, image_alt=image_alt)
+    return render_template('alt_generator.html', form=form)
 
 @app.route("/register", methods=['GET', 'POST'])
 @login_required # Do przemyślenia, jak będzie wyglądała rejestracja

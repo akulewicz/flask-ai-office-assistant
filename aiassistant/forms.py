@@ -7,6 +7,10 @@ class CorrectorForm(FlaskForm):
     text = TextAreaField('Tekst do korekty', validators=[DataRequired(message='Musisz podać tekst')])
     simplify = BooleanField('Uprość tekst')
     submit = SubmitField('Popraw')
+
+class AltGeneratorForm(FlaskForm):
+    image_url = StringField('Link do obrazka', validators=[DataRequired(message='Podaj link do obrazka')])
+    submit = SubmitField('Generuj')
     
 class RegistrationForm(FlaskForm):
     username = StringField('Nazwa użytkownika', validators=[DataRequired(message='Podaj nazwę użytkownika')])

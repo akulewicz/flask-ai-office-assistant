@@ -1,4 +1,4 @@
-const copyButton = document.querySelector('copy-button');
+const copyButton = document.querySelector('.copy-button');
 const textToCopy = document.querySelector('.text-to-copy');
 
 copyButton.addEventListener('click', () => {
